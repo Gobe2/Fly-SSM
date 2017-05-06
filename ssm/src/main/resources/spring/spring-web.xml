@@ -24,12 +24,31 @@
     -->
     <mvc:default-servlet-handler/>
 
-    <!--3：配置JSP 显示ViewResolver-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/jsp/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
+    <!--3：配置freemarker 显示ViewResolver-->    
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="cache" value="true" />
+		<property name="suffix" value=".ftl" />
+	</bean>
+	<bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+		<property name="configLocation" value="classpath:freemarker.properties" /><!-- 设置FreeMarker环境属性 方式1 -->
+	<!-- 	<property name="freemarkerSettings">     设置FreeMarker环境属性 方式2
+            <props>
+                <prop key="template_update_delay">5</prop>刷新模板的周期，单位为秒
+                <prop key="default_encoding">UTF-8</prop>模板的编码格式
+                <prop key="locale">UTF-8</prop>本地化设置
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="time_format">HH:mm:ss</prop>
+                <prop key="number_format">0.####</prop>
+                <prop key="boolean_format">true,false</prop>
+                <prop key="whitespace_stripping">true</prop>
+                <prop key="tag_syntax">auto_detect</prop>
+                <prop key="url_escaping_charset">UTF-8</prop>
+            </props>
+        </property> -->
+	</bean>
 
     <!--4:扫描web相关的controller-->
     <context:component-scan base-package="com.fly.web"/>

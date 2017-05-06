@@ -20,6 +20,11 @@ public class UserServiceImp implements UserService {
 
 	public List<User> getUserList() {
 		logger.info("获取用户列表");
-		return userDao.queryAll();
+		List<User> users =  userDao.queryAll();
+		User user = new User();
+		user.setUser("张三");
+		user.setPassword("****");
+		users.add(user);
+		return users;
 	}
 }
