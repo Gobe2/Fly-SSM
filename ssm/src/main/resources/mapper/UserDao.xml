@@ -8,7 +8,7 @@
 
     <select id="queryAll" resultType="User">
         SELECT *
-        FROM all_users
+        FROM user
     </select>
 
 

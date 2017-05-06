@@ -1,22 +1,22 @@
 package com.fly.vo;
 
 public class User {
-	private String username;
-	private String userId;
+	private String user;
+	private String password;
 
-	public String getUsername() {
-		return username;
+	public String getUser() {
+		return user;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUser(String user) {
+		this.user = user;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }
